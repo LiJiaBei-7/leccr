@@ -19,7 +19,7 @@ sh run_video.sh
 
 
 
-The codes are modified from [NRCCR](https://github.com/LiJiaBei-7/nrccr) and [CCLM](https://github.com/zengyan-97/CCLM)
+The codes are modified from [NRCCR](https://github.com/LiJiaBei-7/nrccr) and [CCLM](https://github.com/zengyan-97/CCLM).
 
 ## Reference
 
