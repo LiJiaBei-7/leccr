@@ -6,6 +6,8 @@ source code of our paper [Multimodal LLM Enhanced Cross-lingual Cross-modal Retr
 
 
 
+The codes are modified from [NRCCR](https://github.com/LiJiaBei-7/nrccr) and [CCLM](https://github.com/zengyan-97/CCLM)
+
 ## Reference
 
 If you find the package useful, please consider citing our paper:
