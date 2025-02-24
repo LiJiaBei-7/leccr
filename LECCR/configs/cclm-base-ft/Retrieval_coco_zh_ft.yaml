@@ -40,8 +40,8 @@ text_num_hidden_layers: 12
 
 #
 weight_reg_loss: 0.01
-weight_caption_loss: 0.07
-weight_dstl_loss: 0.3
+weight_caption_loss: 0.01
+weight_dstl_loss: 0.5
 weight_cv_loss: 0.01
 num_queries: 4
 
