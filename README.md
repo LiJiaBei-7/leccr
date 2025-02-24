@@ -4,6 +4,19 @@ source code of our paper [Multimodal LLM Enhanced Cross-lingual Cross-modal Retr
 
 ![image](LECCR/framework.png)
 
+### Data
+
+The training and inference data can be obtained from the [NRCCR](https://github.com/LiJiaBei-7/nrccr), and we use the [videochat2](https://github.com/OpenGVLab/Ask-Anything) to generate the image description.
+
+### Training
+
+```
+cd LECCR
+sh run_multi30k.sh
+sh run_mscoco.sh
+sh run_video.sh
+```
+
 
 
 The codes are modified from [NRCCR](https://github.com/LiJiaBei-7/nrccr) and [CCLM](https://github.com/zengyan-97/CCLM)
