@@ -1,0 +1,65 @@
+#
+
+root_dir: '<root-dir>' 
+dataset: 'mscoco'
+train_file: [ 
+              'TextData/mscocotrain_enc.caption.txt',
+              'TextData/mscocotrain_google_enc2zh.caption.txt'
+            ] 
+
+val_file: {
+          'zh': 'TextData/mscocoval_zh.caption.txt',
+}
+
+
+test_file: {
+          'ja': 'TextData/mscocotest_zh.caption.txt',
+}
+
+test_trans_file: null
+
+caption_encoder_name: 'mbert'
+generated_caption_dir: '<path>/data_video_chat2_generated'
+generated_caption_type: 'caption' 
+
+image_root: '<pic-path>'
+
+## Vision Encoder
+vision_config: 'configs/config_swinB_384.json'
+
+use_clip_vit: False
+#image_res: 384
+#patch_size: 16
+
+use_swin: True
+image_res: 384 #384
+patch_size: 32
+
+## Text Encoder (& Cross Encoder)
+text_num_hidden_layers: 12
+
+#
+weight_reg_loss: 0.01
+weight_caption_loss: 0.07
+weight_dstl_loss: 0.3
+weight_cv_loss: 0.01
+num_queries: 4
+
+caption_ca_layer: 3
+caption_interaction_layer: 2
+
+## Training
+use_one_cl_proj_only: False
+
+batch_size_train: 10
+batch_size_test: 6
+batch_size_test_text: 32
+max_tokens: 200
+embed_dim: 256
+temp: 0.07
+k_test: 128
+
+
+## Other Settings
+optimizer: {opt: adamW, lr: 1e-5, weight_decay: 0.01, lr_mult: 2}
+schedular: {sched: linear, lr: 1e-5, epochs: 50, num_warmup_steps: 0.1}

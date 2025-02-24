@@ -1,0 +1,82 @@
+# All-Language Finetune
+#train_file: '/home/wyb/wyb/workspace/VisualSearch/multi30k/TextData/Flickr30ktrain_enc.caption.txt' #['data/finetune/multi30k/train.en.json']
+root_dir: '/home/wyb/workspace/VisualSearch/mscoco/mscoco' #'/home/wyb/workspace/VisualSearch/multi30k' #'/home/ma-user/work/workspace/dataset/multi30k'
+dataset: 'mscoco'
+train_file: [ 
+              'TextData/mscocotrain_enc.caption.txt',
+              'TextData/mscocotrain_google_enc2ja.caption.txt'
+            ] #['data/finetune/multi30k/train.en.json']
+
+val_file: {
+          # 'en': '/home/wyb/wyb/workspace/VisualSearch/multi30k/TextData/multi30kval_en.caption.txt',
+          #  'de': '/home/wyb/wyb/workspace/VisualSearch/multi30k/TextData/multi30kval_de.caption.txt',
+          'ja': 'TextData/mscocoval_ja.caption.txt',
+#           'cs': '/home/wyb/wyb/workspace/VisualSearch/multi30k/TextData/multi30kval_cs.caption.txt'
+}
+
+#val_file: {'en': 'data/finetune/multi30k/val.en.json',
+#           'de': 'data/finetune/multi30k/val.de.json',
+#           'fr': 'data/finetune/multi30k/val.fr.json',
+#           'cs': 'data/finetune/multi30k/val.cs.json'}
+
+test_file: {
+#           'en': '/home/wyb/wyb/workspace/VisualSearch/multi30k/TextData/multi30ktest_enc_2016.caption.txt',
+          #  'de': '/home/wyb/wyb/workspace/VisualSearch/multi30k/TextData/multi30ktest_de_2016.caption.txt',
+          'ja': 'TextData/mscocotest_1k_ja.caption.txt',
+#           'cs': '/home/wyb/wyb/workspace/VisualSearch/multi30k/TextData/multi30ktest_cs_2016.caption.txt'
+}
+
+# test_trans_file: '/earth-nas/datasets/multi30k/TextData/multi30ktest_google_fr2enc_2016.caption.txt'
+test_trans_file: null
+
+caption_encoder_name: 'mbert' #mbert
+generated_caption_dir: '/home/wyb/workspace/VisualSearch/mscoco/mscoco/data_video_chat2_generated'
+generated_caption_type: 'caption' #'feats'
+
+#test_file: {'en': 'data/finetune/multi30k/test_2016_flickr.en.json',
+#           'de': 'data/finetune/multi30k/test_2016_flickr.de.json',
+#           'fr': 'data/finetune/multi30k/test_2016_flickr.fr.json',
+#           'cs': 'data/finetune/multi30k/test_2016_flickr.cs.json'}
+
+image_root: '/home/wyb/workspace/VisualSearch/mscoco/all_pics'
+
+## Vision Encoder
+vision_config: 'configs/config_swinB_384.json'
+
+use_clip_vit: False
+#image_res: 384
+#patch_size: 16
+
+use_swin: True
+image_res: 384 #384
+patch_size: 32
+
+## Text Encoder (& Cross Encoder)
+text_encoder: 'data/xlm-roberta-large'
+text_num_hidden_layers: 12
+
+#
+weight_reg_loss: 0.01
+weight_caption_loss: 0.05
+weight_dstl_loss: 0.3
+weight_cv_loss: 0.01
+num_queries: 4
+
+caption_ca_layer: 3
+caption_interaction_layer: 2
+
+## Training
+use_one_cl_proj_only: False
+
+batch_size_train: 10
+batch_size_test: 6
+batch_size_test_text: 16
+max_tokens: 200
+embed_dim: 256
+temp: 0.07
+k_test: 128
+
+
+## Other Settings
+optimizer: {opt: adamW, lr: 1e-5, weight_decay: 0.01, lr_mult: 2}
+schedular: {sched: linear, lr: 1e-5, epochs: 50, num_warmup_steps: 0.1}
